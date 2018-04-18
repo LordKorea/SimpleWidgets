@@ -29,6 +29,15 @@ public final class WidgetAPI {
     }
 
     /**
+     * Get a widget by its save ID.
+     * @param saveId The save ID.
+     * @return The widget, or null.
+     */
+    public static Widget getWidget(final String saveId) {
+        return manager.getWidget(saveId);
+    }
+
+    /**
      * Private constructor to prevent instance creation.
      */
     private WidgetAPI() {

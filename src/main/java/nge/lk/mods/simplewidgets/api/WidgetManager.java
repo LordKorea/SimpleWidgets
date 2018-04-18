@@ -89,12 +89,15 @@ public final class WidgetManager {
      * Registers a widget for display.
      *
      * @param widget The widget to register.
+     *
+     * @return The widget.
      */
-    public void registerWidget(final Widget widget) {
+    public Widget registerWidget(final Widget widget) {
         if (serializedCache.containsKey(widget.getSaveId())) {
             widget.deserialize(serializedCache.remove(widget.getSaveId()));
         }
         widgets.put(widget.getSaveId(), widget);
+        return widget;
     }
 
     /**
@@ -105,6 +108,17 @@ public final class WidgetManager {
      */
     public void provideSerializedWidget(final String saveId, final String line) {
         serializedCache.put(saveId, line);
+    }
+
+    /**
+     * Fetches a widget by save ID.
+     *
+     * @param saveId The save ID.
+     *
+     * @return The widget, or null.
+     */
+    public Widget getWidget(final String saveId) {
+        return widgets.get(saveId);
     }
 
     /**

@@ -15,8 +15,11 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import nge.lk.mods.commonlib.util.DebugUtil;
+import nge.lk.mods.simplewidgets.api.Widget;
 import nge.lk.mods.simplewidgets.api.WidgetAPI;
 import nge.lk.mods.simplewidgets.api.WidgetManager;
+import nge.lk.mods.simplewidgets.widgets.FPSWidget;
+import nge.lk.mods.simplewidgets.widgets.FacingWidget;
 import org.lwjgl.input.Keyboard;
 
 import java.io.File;
@@ -76,6 +79,7 @@ public class SimpleWidgetsMod {
     @EventHandler
     public void onInit(final FMLInitializationEvent event) {
         widgetIO.loadAll();
+        registerDefaultWidgets();
         editorKey = new KeyBinding("Widget Editor", Keyboard.KEY_F9, "Simple Widgets");
         ClientRegistry.registerKeyBinding(editorKey);
         MinecraftForge.EVENT_BUS.register(this);
@@ -111,5 +115,13 @@ public class SimpleWidgetsMod {
         }
         widgetManager.renderAll(resolution);
         GlStateManager.popMatrix();
+    }
+
+    /**
+     * Registers all default widgets.
+     */
+    private void registerDefaultWidgets() {
+        final Widget fps = widgetManager.registerWidget(new FPSWidget(0, 0));
+        final Widget facing = widgetManager.registerWidget(new FacingWidget(fps.getWidth(), 0));
     }
 }
