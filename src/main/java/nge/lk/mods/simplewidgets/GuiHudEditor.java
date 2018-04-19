@@ -5,9 +5,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
 import nge.lk.mods.simplewidgets.api.Widget;
-import nge.lk.mods.simplewidgets.api.WidgetManager;
-
-import java.io.IOException;
 
 /**
  * The HUD editor provides a way to move and enable/disable widgets.
@@ -42,10 +39,12 @@ public class GuiHudEditor extends GuiScreen {
 
     @Override
     public void drawScreen(final int mouseX, final int mouseY, final float partialTicks) {
-        drawCenteredString(fontRendererObj, "Move widgets by dragging them", width / 2, height / 2 - 10,
+        drawCenteredString(fontRendererObj, "Move widgets by dragging them", width / 2, height / 2 - 20,
                 0xDCDCDC);
         drawCenteredString(fontRendererObj, "Right click widgets to toggle their visibility", width / 2,
-                height / 2, 0xDCDCDC);
+                height / 2 - 10, 0xDCDCDC);
+        drawCenteredString(fontRendererObj, "Some widgets can be configured by middle clicking them",
+                width / 2, height / 2, 0xDCDCDC);
         drawCenteredString(fontRendererObj, "Close with ESC", width / 2, height / 2 + 10, 0xDCDCDC);
 
         drawRect(width / 4, 0, width / 4 + 1, height, 0x77777777);
@@ -72,12 +71,14 @@ public class GuiHudEditor extends GuiScreen {
     }
 
     @Override
-    protected void mouseClicked(final int mouseX, final int mouseY, final int mouseButton) throws IOException {
+    protected void mouseClicked(final int mouseX, final int mouseY, final int mouseButton) {
         final int scaledX = 1000 * mouseX / width;
         final int scaledY = 1000 * mouseY / height;
         dragWidget = widgetManager.getWidgetAt(scaledX, scaledY);
         if (mouseButton == 1 && dragWidget != null) {
             dragWidget.toggleEnabledState();
+        } else if (mouseButton == 2 && dragWidget != null) {
+            dragWidget.configure();
         }
         lastMouseX = scaledX;
         lastMouseY = scaledY;
