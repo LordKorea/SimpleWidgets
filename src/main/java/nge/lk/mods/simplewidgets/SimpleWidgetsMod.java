@@ -19,6 +19,7 @@ import nge.lk.mods.simplewidgets.api.MultilineWidget;
 import nge.lk.mods.simplewidgets.api.Widget;
 import nge.lk.mods.simplewidgets.api.WidgetAPI;
 import nge.lk.mods.simplewidgets.widgets.ArmorWidget;
+import nge.lk.mods.simplewidgets.widgets.ArrowWidget;
 import nge.lk.mods.simplewidgets.widgets.BiomeWidget;
 import nge.lk.mods.simplewidgets.widgets.CoordinateWidget;
 import nge.lk.mods.simplewidgets.widgets.FPSWidget;
@@ -131,5 +132,6 @@ public class SimpleWidgetsMod {
         widgetManager.registerWidget(new CoordinateWidget(0, lineHeight));
         widgetManager.registerWidget(new BiomeWidget(0, 2 * lineHeight));
         widgetManager.registerWidget(new ArmorWidget());
+        widgetManager.registerWidget(new ArrowWidget());
     }
 }
