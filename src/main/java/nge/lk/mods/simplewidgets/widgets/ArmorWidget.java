@@ -19,6 +19,9 @@ import nge.lk.mods.simplewidgets.api.WidgetAPI;
 
 import java.util.function.Consumer;
 
+/**
+ * A widget that shows the current status of the player's equipment.
+ */
 public class ArmorWidget extends Widget {
 
     /**
@@ -163,6 +166,20 @@ public class ArmorWidget extends Widget {
     @Override
     public void configure() {
         Minecraft.getMinecraft().displayGuiScreen(new WidgetConfigGUI(Minecraft.getMinecraft().currentScreen));
+    }
+
+    @Override
+    public String serialize() {
+        return super.serialize() + "," + alignRight + "," + alignTop;
+    }
+
+    @Override
+    public int deserialize(final String line) {
+        final int k = super.deserialize(line);
+        final String[] data = line.split(",");
+        alignRight = Boolean.parseBoolean(data[k + 1]);
+        alignTop = Boolean.parseBoolean(data[k + 2]);
+        return k + 2;
     }
 
     /**
