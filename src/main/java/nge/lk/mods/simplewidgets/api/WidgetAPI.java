@@ -19,7 +19,7 @@ public final class WidgetAPI {
     private static WidgetIO widgetIO;
 
     /**
-     * Initialize the API.
+     * Initialize the API. Not intended to be called by users of the API.
      *
      * @param mgr The widget manager.
      */
