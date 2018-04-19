@@ -21,6 +21,7 @@ import nge.lk.mods.simplewidgets.api.WidgetAPI;
 import nge.lk.mods.simplewidgets.widgets.ArmorWidget;
 import nge.lk.mods.simplewidgets.widgets.ArrowWidget;
 import nge.lk.mods.simplewidgets.widgets.BiomeWidget;
+import nge.lk.mods.simplewidgets.widgets.CompassWidget;
 import nge.lk.mods.simplewidgets.widgets.CoordinateWidget;
 import nge.lk.mods.simplewidgets.widgets.FPSWidget;
 import nge.lk.mods.simplewidgets.widgets.FacingWidget;
@@ -137,5 +138,6 @@ public class SimpleWidgetsMod {
         widgetManager.registerWidget(new ArrowWidget());
         widgetManager.registerWidget(new PingWidget(3 * lineHeight));
         widgetManager.registerWidget(new KeystrokeWidget());
+        widgetManager.registerWidget(new CompassWidget());
     }
 }
