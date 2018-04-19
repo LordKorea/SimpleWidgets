@@ -168,11 +168,20 @@ public abstract class Widget {
     }
 
     /**
+     * This method is called when a user requests to configure a widget. The widget can then for example open a GUI.
+     */
+    public void configure() {
+        // Not all widgets need configuration
+    }
+
+    /**
      * Deserializes the serialized widget.
      *
      * @param line The serialized widget.
+     *
+     * @return The last used array element.
      */
-    public void deserialize(final String line) {
+    public int deserialize(final String line) {
         final String[] split = line.split(",");
         positionX = Double.parseDouble(split[1]);
         positionY = Double.parseDouble(split[2]);
@@ -181,6 +190,7 @@ public abstract class Widget {
         sideAlignment[1] = Boolean.parseBoolean(split[5]);
         sideAlignment[2] = Boolean.parseBoolean(split[6]);
         sideAlignment[3] = Boolean.parseBoolean(split[7]);
+        return 7;
     }
 
     /**

@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import nge.lk.mods.commonlib.util.DebugUtil;
 import nge.lk.mods.commonlib.util.FileUtil;
 import nge.lk.mods.simplewidgets.api.Widget;
-import nge.lk.mods.simplewidgets.api.WidgetManager;
 
 import java.io.File;
 import java.io.IOException;

@@ -15,9 +15,11 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import nge.lk.mods.commonlib.util.DebugUtil;
+import nge.lk.mods.simplewidgets.api.MultilineWidget;
 import nge.lk.mods.simplewidgets.api.Widget;
 import nge.lk.mods.simplewidgets.api.WidgetAPI;
-import nge.lk.mods.simplewidgets.api.WidgetManager;
+import nge.lk.mods.simplewidgets.widgets.BiomeWidget;
+import nge.lk.mods.simplewidgets.widgets.CoordinateWidget;
 import nge.lk.mods.simplewidgets.widgets.FPSWidget;
 import nge.lk.mods.simplewidgets.widgets.FacingWidget;
 import org.lwjgl.input.Keyboard;
@@ -73,7 +75,7 @@ public class SimpleWidgetsMod {
         DebugUtil.initializeLogger(MODID);
         widgetManager = new WidgetManager();
         widgetIO = new WidgetIO(new File(event.getModConfigurationDirectory(), "widgets.dat"), widgetManager);
-        WidgetAPI.initialize(widgetManager);
+        WidgetAPI.initialize(widgetManager, widgetIO);
     }
 
     @EventHandler
@@ -121,7 +123,11 @@ public class SimpleWidgetsMod {
      * Registers all default widgets.
      */
     private void registerDefaultWidgets() {
+        final ScaledResolution resolution = new ScaledResolution(Minecraft.getMinecraft());
+        final int lineHeight = MultilineWidget.getSingleLineHeight(resolution.getScaledHeight());
         final Widget fps = widgetManager.registerWidget(new FPSWidget(0, 0));
-        final Widget facing = widgetManager.registerWidget(new FacingWidget(fps.getWidth(), 0));
+        widgetManager.registerWidget(new FacingWidget(fps.getWidth(), 0));
+        widgetManager.registerWidget(new CoordinateWidget(0, lineHeight));
+        widgetManager.registerWidget(new BiomeWidget(0, 2 * lineHeight));
     }
 }
