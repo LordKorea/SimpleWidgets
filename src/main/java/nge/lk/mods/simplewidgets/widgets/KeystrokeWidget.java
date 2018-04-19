@@ -17,7 +17,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * The key stroke widget shows the WASD keys, Ctrl, Shift and the mouse buttons and shows when they are pressed.
+ * The key stroke widget shows the WASD keys, Space, Shift and the mouse buttons and shows when they are pressed.
  * It also displays the click speed.
  */
 public class KeystrokeWidget extends Widget {

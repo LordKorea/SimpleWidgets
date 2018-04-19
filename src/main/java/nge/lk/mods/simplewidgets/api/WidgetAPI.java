@@ -2,6 +2,7 @@ package nge.lk.mods.simplewidgets.api;
 
 import nge.lk.mods.simplewidgets.WidgetIO;
 import nge.lk.mods.simplewidgets.WidgetManager;
+import nge.lk.mods.simplewidgets.widgets.CompassWidget;
 
 /**
  * The public API of the mod.
@@ -46,6 +47,30 @@ public final class WidgetAPI {
      */
     public static Widget getWidget(final String saveId) {
         return manager.getWidget(saveId);
+    }
+
+    /**
+     * Creates a compass marker.
+     *
+     * @param id The id of the marker.
+     *
+     * @return The marker.
+     */
+    public static Marker createCompassMarker(final String id) {
+        final CompassWidget compass = (CompassWidget) getWidget("compass");
+        final Marker res = new Marker(0, 0, 0, false);
+        compass.setMarker(id, res);
+        return res;
+    }
+
+    /**
+     * Removes a marker from the compass.
+     *
+     * @param id The id of the marker.
+     */
+    public static void removeMarker(final String id) {
+        final CompassWidget compass = (CompassWidget) getWidget("compass");
+        compass.setMarker(id, null);
     }
 
     /**

@@ -193,12 +193,12 @@ public class ArmorWidget extends Widget {
         private final GuiScreen parentScreen;
 
         /**
-         * The button for the horizontal alignment
+         * The button for the horizontal alignment.
          */
         private ButtonElement alignRightButton;
 
         /**
-         * The button for the vertical alignment
+         * The button for the vertical alignment.
          */
         private ButtonElement alignTopButton;
 
@@ -238,11 +238,13 @@ public class ArmorWidget extends Widget {
             addText(new Positioning().center()).setText("Armor Widget", 0xA0A0A0);
             addBlank(new Positioning().breakRow().absoluteHeight(25));
 
-            alignRightButton = addButton(this, new Positioning().center().relativeWidth(30).absoluteHeight(20));
+            alignRightButton = addButton(this,
+                    new Positioning().center().relativeWidth(30).absoluteHeight(20));
             alignRightButton.getButton().displayString = "Align Right: " + (alignRight ? "Yes" : "No");
             addBlank(new Positioning().breakRow().absoluteHeight(15));
 
-            alignTopButton = addButton(this, new Positioning().center().relativeWidth(30).absoluteHeight(20));
+            alignTopButton = addButton(this,
+                    new Positioning().center().relativeWidth(30).absoluteHeight(20));
             alignTopButton.getButton().displayString = "Align Top: " + (alignTop ? "Yes" : "No");
 
             saveButton = addButton(this,
