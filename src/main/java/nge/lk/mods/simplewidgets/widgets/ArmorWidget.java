@@ -123,9 +123,9 @@ public class ArmorWidget extends Widget {
                 } else if (pct > 0.75) {
                     color = 0x55FF55;
                 } else if (pct > 0.5) {
-                    color = 0xFFAA00;
-                } else if (pct > 0.25) {
                     color = 0xFFFF55;
+                } else if (pct > 0.25) {
+                    color = 0xFFAA00;
                 } else if (pct > 0.05) {
                     color = 0xFF5555;
                 } else {
