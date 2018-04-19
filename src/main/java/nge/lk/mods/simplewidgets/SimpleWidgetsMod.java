@@ -24,6 +24,7 @@ import nge.lk.mods.simplewidgets.widgets.BiomeWidget;
 import nge.lk.mods.simplewidgets.widgets.CoordinateWidget;
 import nge.lk.mods.simplewidgets.widgets.FPSWidget;
 import nge.lk.mods.simplewidgets.widgets.FacingWidget;
+import nge.lk.mods.simplewidgets.widgets.PingWidget;
 import org.lwjgl.input.Keyboard;
 
 import java.io.File;
@@ -133,5 +134,6 @@ public class SimpleWidgetsMod {
         widgetManager.registerWidget(new BiomeWidget(0, 2 * lineHeight));
         widgetManager.registerWidget(new ArmorWidget());
         widgetManager.registerWidget(new ArrowWidget());
+        widgetManager.registerWidget(new PingWidget(3 * lineHeight));
     }
 }

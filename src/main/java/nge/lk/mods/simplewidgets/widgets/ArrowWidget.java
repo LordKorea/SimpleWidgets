@@ -25,6 +25,11 @@ import java.util.function.Consumer;
 public class ArrowWidget extends Widget {
 
     /**
+     * The arrow which is displayed in the widget.
+     */
+    private final ItemStack arrowItem;
+
+    /**
      * The number of arrows the player has.
      */
     private int arrowCount;
@@ -39,6 +44,7 @@ public class ArrowWidget extends Widget {
      */
     public ArrowWidget() {
         super("arrow", z -> true);
+        arrowItem = new ItemStack(Items.arrow);
         alignRight = true;
         onResize();
         positionX = 1000 - width;
@@ -62,7 +68,7 @@ public class ArrowWidget extends Widget {
         final FontRenderer font = Minecraft.getMinecraft().fontRendererObj;
         if (arrowCount > 0 || Minecraft.getMinecraft().currentScreen instanceof GuiHudEditor) {
             final int step = alignRight ? -1 : 1;
-            renderItem.renderItemAndEffectIntoGUI(new ItemStack(Items.arrow), baseX + (alignRight ? -17 : 1),
+            renderItem.renderItemAndEffectIntoGUI(arrowItem, baseX + (alignRight ? -17 : 1),
                     baseY + 2);
             final String arrowStr = Integer.toString(arrowCount);
             final int textX = baseX + step * (1 + 16 + 2) - (alignRight ? font.getStringWidth(arrowStr) : 0);
