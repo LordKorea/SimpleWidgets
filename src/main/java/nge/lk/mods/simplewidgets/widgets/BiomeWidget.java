@@ -26,8 +26,8 @@ public class BiomeWidget extends MultilineWidget {
             return "[unknown]";
         }
         final BlockPos bPos = new BlockPos(entity.posX, entity.posY, entity.posZ);
-        final Chunk chunk = Minecraft.getMinecraft().theWorld.getChunkFromBlockCoords(bPos);
-        return "[" + chunk.getBiome(bPos, Minecraft.getMinecraft().theWorld.getBiomeProvider()).getBiomeName() + "]";
+        final Chunk chunk = Minecraft.getMinecraft().world.getChunkFromBlockCoords(bPos);
+        return "[" + chunk.getBiome(bPos, Minecraft.getMinecraft().world.getBiomeProvider()).getBiomeName() + "]";
     }
 
     /**

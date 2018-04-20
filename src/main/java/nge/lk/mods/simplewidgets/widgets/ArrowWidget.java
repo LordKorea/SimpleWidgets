@@ -90,15 +90,15 @@ public class ArrowWidget extends Widget {
 
     @SubscribeEvent
     public void onTick(final ClientTickEvent event) {
-        if (Minecraft.getMinecraft().thePlayer != null) {
+        if (Minecraft.getMinecraft().player != null) {
             arrowCount = 0;
-            for (final ItemStack its : Minecraft.getMinecraft().thePlayer.inventory.mainInventory) {
+            for (final ItemStack its : Minecraft.getMinecraft().player.inventory.mainInventory) {
                 if (its == null) {
                     continue;
                 }
                 if (its.getItem() == Items.ARROW || its.getItem() == Items.SPECTRAL_ARROW
                         || its.getItem() == Items.TIPPED_ARROW) {
-                    arrowCount += its.stackSize;
+                    arrowCount += its.getCount();
                 }
             }
         }

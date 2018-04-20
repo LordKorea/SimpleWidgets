@@ -86,9 +86,9 @@ public class PingWidget extends Widget {
     @SubscribeEvent
     public void onTick(final ClientTickEvent event) {
         ping = -1;
-        if (Minecraft.getMinecraft().thePlayer != null && Minecraft.getMinecraft().thePlayer.connection != null) {
-            final NetworkPlayerInfo playerInfo = Minecraft.getMinecraft().thePlayer.connection.getPlayerInfo(
-                    Minecraft.getMinecraft().thePlayer.getUniqueID());
+        if (Minecraft.getMinecraft().player != null && Minecraft.getMinecraft().player.connection != null) {
+            final NetworkPlayerInfo playerInfo = Minecraft.getMinecraft().player.connection.getPlayerInfo(
+                    Minecraft.getMinecraft().player.getUniqueID());
             if (playerInfo != null) {
                 ping = playerInfo.getResponseTime();
             }

@@ -241,8 +241,8 @@ public class CompassWidget extends Widget {
             }
         }
 
-        final double srcX = Minecraft.getMinecraft().thePlayer.posX;
-        final double srcZ = Minecraft.getMinecraft().thePlayer.posZ;
+        final double srcX = Minecraft.getMinecraft().player.posX;
+        final double srcZ = Minecraft.getMinecraft().player.posZ;
         for (final Marker marker : markers.values()) {
             if (!marker.isEnabled()) {
                 continue;

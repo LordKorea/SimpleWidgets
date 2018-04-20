@@ -69,7 +69,7 @@ public class ArmorWidget extends Widget {
         if (Minecraft.getMinecraft().currentScreen instanceof GuiHudEditor) {
             boolean any = false;
             for (final ItemStack its : renderList) {
-                if (its != null && its.getMaxDamage() > 0) {
+                if (its != ItemStack.EMPTY && its.getMaxDamage() > 0) {
                     any = true;
                     break;
                 }
@@ -104,7 +104,7 @@ public class ArmorWidget extends Widget {
         final int renderOffset = alignTop ? 0 : -16;
         int yCur = baseY + 2 * step + renderOffset;
         for (int i = start; i != end; i += step) {
-            if (target[i] == null) {
+            if (target[i] == ItemStack.EMPTY) {
                 continue;
             }
             if (i == 4 && target[i].getMaxDamage() == 0) {
@@ -154,12 +154,12 @@ public class ArmorWidget extends Widget {
 
     @SubscribeEvent
     public void onTick(final ClientTickEvent event) {
-        if (Minecraft.getMinecraft().thePlayer != null) {
+        if (Minecraft.getMinecraft().player != null) {
             int i = 0;
-            for (final ItemStack item : Minecraft.getMinecraft().thePlayer.inventory.armorInventory) {
+            for (final ItemStack item : Minecraft.getMinecraft().player.inventory.armorInventory) {
                 renderList[3 - i++] = item;
             }
-            renderList[4] = Minecraft.getMinecraft().thePlayer.inventory.getCurrentItem();
+            renderList[4] = Minecraft.getMinecraft().player.inventory.getCurrentItem();
         }
     }
 
