@@ -6,7 +6,7 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -62,9 +62,9 @@ public class PingWidget extends Widget {
         final int imageSel = imageMode * 8 + 176;
         final double vUnit = 0.00390625F;
         final double uUnit = 0.0390625F;
-        Minecraft.getMinecraft().getTextureManager().bindTexture(Gui.icons);
+        Minecraft.getMinecraft().getTextureManager().bindTexture(Gui.ICONS);
         final Tessellator tessellator = Tessellator.getInstance();
-        final WorldRenderer rdr = tessellator.getWorldRenderer();
+        final VertexBuffer rdr = tessellator.getBuffer();
         rdr.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
         rdr.pos(baseX + 4, baseY + 11, 0).tex(0, (imageSel + 8) * vUnit).endVertex();
         rdr.pos(baseX + 14, baseY + 11, 0).tex(uUnit, (imageSel + 8) * vUnit).endVertex();
@@ -86,8 +86,8 @@ public class PingWidget extends Widget {
     @SubscribeEvent
     public void onTick(final ClientTickEvent event) {
         ping = -1;
-        if (Minecraft.getMinecraft().thePlayer != null && Minecraft.getMinecraft().thePlayer.sendQueue != null) {
-            final NetworkPlayerInfo playerInfo = Minecraft.getMinecraft().thePlayer.sendQueue.getPlayerInfo(
+        if (Minecraft.getMinecraft().thePlayer != null && Minecraft.getMinecraft().thePlayer.connection != null) {
+            final NetworkPlayerInfo playerInfo = Minecraft.getMinecraft().thePlayer.connection.getPlayerInfo(
                     Minecraft.getMinecraft().thePlayer.getUniqueID());
             if (playerInfo != null) {
                 ping = playerInfo.getResponseTime();

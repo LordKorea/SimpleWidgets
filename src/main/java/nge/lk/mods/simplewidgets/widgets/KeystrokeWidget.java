@@ -127,10 +127,10 @@ public class KeystrokeWidget extends Widget {
 
     @SubscribeEvent
     public void mouseInput(final MouseEvent e) {
-        if (e.button == 0 && e.buttonstate) {
+        if (e.getButton() == 0 && e.isButtonstate()) {
             leftClickSpeed++;
             tickRunnables.add(new TickRunnable(tickCounter + 20, () -> leftClickSpeed--));
-        } else if (e.button == 1 && e.buttonstate) {
+        } else if (e.getButton() == 1 && e.isButtonstate()) {
             rightClickSpeed++;
             tickRunnables.add(new TickRunnable(tickCounter + 20, () -> rightClickSpeed--));
         }

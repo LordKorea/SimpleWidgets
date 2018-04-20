@@ -4,7 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -44,7 +44,7 @@ public class ArrowWidget extends Widget {
      */
     public ArrowWidget() {
         super("arrow", z -> true);
-        arrowItem = new ItemStack(Items.arrow);
+        arrowItem = new ItemStack(Items.ARROW);
         alignRight = true;
         onResize();
         positionX = 1000 - width;
@@ -96,7 +96,8 @@ public class ArrowWidget extends Widget {
                 if (its == null) {
                     continue;
                 }
-                if (its.getItem() == Items.arrow) {
+                if (its.getItem() == Items.ARROW || its.getItem() == Items.SPECTRAL_ARROW
+                        || its.getItem() == Items.TIPPED_ARROW) {
                     arrowCount += its.stackSize;
                 }
             }

@@ -102,7 +102,7 @@ public class SimpleWidgetsMod {
     @SubscribeEvent
     public void overlayRenderHook(final RenderGameOverlayEvent event) {
         // Hook directly after experience rendering
-        if (event.isCancelable() || event.type != ElementType.EXPERIENCE) {
+        if (event.isCancelable() || event.getType() != ElementType.EXPERIENCE) {
             return;
         }
 

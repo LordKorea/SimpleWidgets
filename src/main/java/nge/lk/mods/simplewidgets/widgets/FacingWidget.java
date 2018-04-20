@@ -1,7 +1,7 @@
 package nge.lk.mods.simplewidgets.widgets;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
@@ -40,7 +40,7 @@ public class FacingWidget extends MultilineWidget {
                 heading = "[W] -X ";
                 break;
         }
-        double fval = MathHelper.wrapAngleTo180_double(
+        double fval = MathHelper.wrapDegrees(
                 Minecraft.getMinecraft().getRenderViewEntity().rotationYaw + 180);
         fval = (fval + 180.0) / 90.0;
         return heading + (((int) (fval * 10)) / 10.0);

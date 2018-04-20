@@ -4,7 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -54,11 +54,11 @@ public class ArmorWidget extends Widget {
         positionY = 1000 - height;
         updateAlignments();
 
-        exampleList[0] = new ItemStack(Items.leather_helmet, 1, 25);
-        exampleList[1] = new ItemStack(Items.chainmail_chestplate, 1, 5);
-        exampleList[2] = new ItemStack(Items.diamond_leggings, 1, 132);
-        exampleList[3] = new ItemStack(Items.golden_boots, 1, 7);
-        exampleList[4] = new ItemStack(Items.iron_sword, 1, 201);
+        exampleList[0] = new ItemStack(Items.LEATHER_HELMET, 1, 25);
+        exampleList[1] = new ItemStack(Items.CHAINMAIL_CHESTPLATE, 1, 5);
+        exampleList[2] = new ItemStack(Items.DIAMOND_LEGGINGS, 1, 132);
+        exampleList[3] = new ItemStack(Items.GOLDEN_BOOTS, 1, 7);
+        exampleList[4] = new ItemStack(Items.IRON_SWORD, 1, 201);
 
         MinecraftForge.EVENT_BUS.register(this);
     }

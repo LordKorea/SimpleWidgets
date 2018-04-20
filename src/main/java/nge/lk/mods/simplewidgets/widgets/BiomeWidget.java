@@ -2,7 +2,7 @@ package nge.lk.mods.simplewidgets.widgets;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -27,7 +27,7 @@ public class BiomeWidget extends MultilineWidget {
         }
         final BlockPos bPos = new BlockPos(entity.posX, entity.posY, entity.posZ);
         final Chunk chunk = Minecraft.getMinecraft().theWorld.getChunkFromBlockCoords(bPos);
-        return "[" + chunk.getBiome(bPos, Minecraft.getMinecraft().theWorld.getWorldChunkManager()).biomeName + "]";
+        return "[" + chunk.getBiome(bPos, Minecraft.getMinecraft().theWorld.getBiomeProvider()).getBiomeName() + "]";
     }
 
     /**
