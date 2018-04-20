@@ -69,7 +69,7 @@ public class MultilineWidget extends Widget {
     public void render(final ScaledResolution scaledResolution) {
         final int posX = (int) (positionX * scaledResolution.getScaledWidth() / 1000.0);
         final int posY = (int) (positionY * scaledResolution.getScaledHeight() / 1000.0);
-        final FontRenderer renderer = Minecraft.getMinecraft().fontRendererObj;
+        final FontRenderer renderer = Minecraft.getMinecraft().fontRenderer;
         int yOffset = 2;
         for (final String line : text) {
             renderer.drawString(line, posX + 3, posY + yOffset, color);
@@ -79,7 +79,7 @@ public class MultilineWidget extends Widget {
 
     @Override
     public void onResize() {
-        final FontRenderer renderer = Minecraft.getMinecraft().fontRendererObj;
+        final FontRenderer renderer = Minecraft.getMinecraft().fontRenderer;
         final ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft());
 
         height = 1000 * 11 * maximumText.length / scaledResolution.getScaledHeight();

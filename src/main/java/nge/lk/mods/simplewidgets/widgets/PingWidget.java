@@ -5,8 +5,8 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.network.NetworkPlayerInfo;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -41,7 +41,7 @@ public class PingWidget extends Widget {
     public void render(final ScaledResolution scaledResolution) {
         final int baseX = (int) (positionX * scaledResolution.getScaledWidth() / 1000.0);
         final int baseY = (int) (positionY * scaledResolution.getScaledHeight() / 1000.0);
-        final FontRenderer font = Minecraft.getMinecraft().fontRendererObj;
+        final FontRenderer font = Minecraft.getMinecraft().fontRenderer;
         font.drawString(ping > 0 ? Integer.toString(ping) : "???", baseX + 17, baseY + 4, 0xFFFFFF);
 
         final int imageMode;
@@ -64,7 +64,7 @@ public class PingWidget extends Widget {
         final double uUnit = 0.0390625F;
         Minecraft.getMinecraft().getTextureManager().bindTexture(Gui.ICONS);
         final Tessellator tessellator = Tessellator.getInstance();
-        final VertexBuffer rdr = tessellator.getBuffer();
+        final BufferBuilder rdr = tessellator.getBuffer();
         rdr.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
         rdr.pos(baseX + 4, baseY + 11, 0).tex(0, (imageSel + 8) * vUnit).endVertex();
         rdr.pos(baseX + 14, baseY + 11, 0).tex(uUnit, (imageSel + 8) * vUnit).endVertex();
@@ -75,7 +75,7 @@ public class PingWidget extends Widget {
 
     @Override
     public void onResize() {
-        final FontRenderer font = Minecraft.getMinecraft().fontRendererObj;
+        final FontRenderer font = Minecraft.getMinecraft().fontRenderer;
         final ScaledResolution resolution = new ScaledResolution(Minecraft.getMinecraft());
         height = 1000 * 16 / resolution.getScaledHeight();
         width = 18 + font.getStringWidth("9999");

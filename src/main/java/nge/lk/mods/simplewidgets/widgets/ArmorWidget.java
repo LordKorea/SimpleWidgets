@@ -69,7 +69,7 @@ public class ArmorWidget extends Widget {
         if (Minecraft.getMinecraft().currentScreen instanceof GuiHudEditor) {
             boolean any = false;
             for (final ItemStack its : renderList) {
-                if (its != ItemStack.EMPTY && its.getMaxDamage() > 0) {
+                if (its != ItemStack.EMPTY && its.getItem() != Items.AIR && its.getMaxDamage() > 0) {
                     any = true;
                     break;
                 }
@@ -97,14 +97,14 @@ public class ArmorWidget extends Widget {
         }
 
         final RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
-        final FontRenderer font = Minecraft.getMinecraft().fontRendererObj;
+        final FontRenderer font = Minecraft.getMinecraft().fontRenderer;
         final int start = alignTop ? 0 : 4;
         final int step = alignTop ? 1 : -1;
         final int end = alignTop ? 5 : -1;
         final int renderOffset = alignTop ? 0 : -16;
         int yCur = baseY + 2 * step + renderOffset;
         for (int i = start; i != end; i += step) {
-            if (target[i] == ItemStack.EMPTY) {
+            if (target[i] == ItemStack.EMPTY || target[i].getItem() == Items.AIR) {
                 continue;
             }
             if (i == 4 && target[i].getMaxDamage() == 0) {
@@ -142,7 +142,7 @@ public class ArmorWidget extends Widget {
 
     @Override
     public void onResize() {
-        final FontRenderer font = Minecraft.getMinecraft().fontRendererObj;
+        final FontRenderer font = Minecraft.getMinecraft().fontRenderer;
         final ScaledResolution resolution = new ScaledResolution(Minecraft.getMinecraft());
         // 5*16, 4 for padding, 3 for blanks
         height = 1000 * (80 + 4 + 3) / resolution.getScaledHeight();

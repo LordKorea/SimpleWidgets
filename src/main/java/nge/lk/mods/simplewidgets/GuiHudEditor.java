@@ -39,13 +39,13 @@ public class GuiHudEditor extends GuiScreen {
 
     @Override
     public void drawScreen(final int mouseX, final int mouseY, final float partialTicks) {
-        drawCenteredString(fontRendererObj, "Move widgets by dragging them", width / 2, height / 2 - 20,
+        drawCenteredString(fontRenderer, "Move widgets by dragging them", width / 2, height / 2 - 20,
                 0xDCDCDC);
-        drawCenteredString(fontRendererObj, "Right click widgets to toggle their visibility", width / 2,
+        drawCenteredString(fontRenderer, "Right click widgets to toggle their visibility", width / 2,
                 height / 2 - 10, 0xDCDCDC);
-        drawCenteredString(fontRendererObj, "Some widgets can be configured by middle clicking them",
+        drawCenteredString(fontRenderer, "Some widgets can be configured by middle clicking them",
                 width / 2, height / 2, 0xDCDCDC);
-        drawCenteredString(fontRendererObj, "Close with ESC", width / 2, height / 2 + 10, 0xDCDCDC);
+        drawCenteredString(fontRenderer, "Close with ESC", width / 2, height / 2 + 10, 0xDCDCDC);
 
         drawRect(width / 4, 0, width / 4 + 1, height, 0x77777777);
         drawRect(width / 2, 0, width / 2 + 1, height, 0x77777777);

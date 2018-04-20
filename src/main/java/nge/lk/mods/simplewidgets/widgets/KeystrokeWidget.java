@@ -82,7 +82,7 @@ public class KeystrokeWidget extends Widget {
         final int baseX = (int) (positionX * scaledResolution.getScaledWidth() / 1000.0);
         final int baseY = (int) (positionY * scaledResolution.getScaledHeight() / 1000.0);
         final double renderHeight = height * scaledResolution.getScaledHeight() / 1000.0;
-        final FontRenderer font = Minecraft.getMinecraft().fontRendererObj;
+        final FontRenderer font = Minecraft.getMinecraft().fontRenderer;
 
         // Draw keys
         drawKeyRect(font, baseX + 3, (int) (baseY + renderHeight - 22), 20, 20,

@@ -65,7 +65,7 @@ public class ArrowWidget extends Widget {
         final int baseY = (int) (positionY * scaledResolution.getScaledHeight() / 1000.0);
 
         final RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
-        final FontRenderer font = Minecraft.getMinecraft().fontRendererObj;
+        final FontRenderer font = Minecraft.getMinecraft().fontRenderer;
         if (arrowCount > 0 || Minecraft.getMinecraft().currentScreen instanceof GuiHudEditor) {
             final int step = alignRight ? -1 : 1;
             renderItem.renderItemAndEffectIntoGUI(arrowItem, baseX + (alignRight ? -17 : 1),
@@ -78,7 +78,7 @@ public class ArrowWidget extends Widget {
 
     @Override
     public void onResize() {
-        final FontRenderer font = Minecraft.getMinecraft().fontRendererObj;
+        final FontRenderer font = Minecraft.getMinecraft().fontRenderer;
         final ScaledResolution resolution = new ScaledResolution(Minecraft.getMinecraft());
         // 16 for icon, 2 for padding
         height = 1000 * 18 / resolution.getScaledHeight();

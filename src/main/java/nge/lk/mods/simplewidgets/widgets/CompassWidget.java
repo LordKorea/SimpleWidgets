@@ -4,9 +4,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.math.MathHelper;
 import nge.lk.mods.commonlib.gui.factory.GuiFactory;
@@ -127,7 +127,7 @@ public class CompassWidget extends Widget {
         final float blueComponent = (float) (color & 255) / 255.0f;
 
         final Tessellator tessellator = Tessellator.getInstance();
-        final VertexBuffer bufferbuilder = tessellator.getBuffer();
+        final BufferBuilder bufferbuilder = tessellator.getBuffer();
         GlStateManager.enableBlend();
         GlStateManager.disableTexture2D();
         if (highContrast) {
@@ -170,7 +170,7 @@ public class CompassWidget extends Widget {
         final int posY = (int) (positionY * scaledResolution.getScaledHeight() / 1000.0);
         final double renderWidth = width * scaledResolution.getScaledWidth() / 1000.0;
         final double renderHeight = height * scaledResolution.getScaledHeight() / 1000.0;
-        final FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
+        final FontRenderer fontRenderer = Minecraft.getMinecraft().fontRenderer;
 
         double rawFacing = MathHelper.wrapDegrees(
                 Minecraft.getMinecraft().getRenderViewEntity().rotationYaw + 180);
