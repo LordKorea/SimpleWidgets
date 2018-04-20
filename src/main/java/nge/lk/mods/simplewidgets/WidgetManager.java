@@ -107,7 +107,11 @@ public final class WidgetManager {
      * @param line The serialized widget line.
      */
     public void provideSerializedWidget(final String saveId, final String line) {
-        serializedCache.put(saveId, line);
+        if (widgets.containsKey(saveId)) {
+            widgets.get(saveId).deserialize(line);
+        } else {
+            serializedCache.put(saveId, line);
+        }
     }
 
     /**
