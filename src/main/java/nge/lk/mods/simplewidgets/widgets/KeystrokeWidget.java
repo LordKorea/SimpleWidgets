@@ -115,6 +115,9 @@ public class KeystrokeWidget extends Widget {
 
     @SubscribeEvent
     public void onTick(final ClientTickEvent event) {
+        if (event.phase != ClientTickEvent.Phase.END) {
+            return;
+        }
         tickCounter++;
         while (!tickRunnables.isEmpty()) {
             if (tickRunnables.peek().getTick() == tickCounter) {
