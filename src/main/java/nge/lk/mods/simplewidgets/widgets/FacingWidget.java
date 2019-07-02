@@ -34,10 +34,10 @@ public class FacingWidget extends MultilineWidget {
                 heading = "[S] +Z ";
                 break;
             case WEST:
-                heading = "[E] +X ";
+                heading = "[W] -X ";
                 break;
             case EAST:
-                heading = "[W] -X ";
+                heading = "[E] +X ";
                 break;
         }
         double fval = MathHelper.wrapDegrees(
